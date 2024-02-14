@@ -1,7 +1,7 @@
 import random
 
 class Baralho:
-    def __init__(self):
+    def __init__(self): # baralho com cartas do poker
         self.cartas = ['A_e', 'A_c', 'A_t', 'A_o', 'K_e', 'K_c', 'K_t', 'K_o',
                        'Q_e', 'Q_c', 'Q_t', 'Q_o', 'J_e', 'J_c', 'J_t', 'J_o',
                        '10_e', '10_c', '10_t', '10_o', '9_e', '9_c', '9_t', '9_o',
@@ -11,12 +11,12 @@ class Baralho:
                        '2_e', '2_c', '2_t', '2_o']
         self.embaralhar()
 
-    def embaralhar(self):
+    def embaralhar(self): # embaralhando
         random.shuffle(self.cartas)
 
 
-    def distribuir_cartas(self, num_jogadores, cartas_por_jogador):
-        if num_jogadores * cartas_por_jogador > len(self.cartas):
+    def distribuir_cartas(self, num_jogadores, cartas_por_jogador): # distribuindo cartas
+        if num_jogadores * cartas_por_jogador > len(self.cartas): # teste para ver se tem mais jogadores que cartas
             print("Não há cartas suficientes para distribuir.")
             return {}
 
@@ -31,13 +31,13 @@ class Baralho:
 
 
     def distribuir_cartas_flop(self):
-        enbaralhadas = list(self.cartas)
+        embaralhadas = list(self.cartas)
         flop = []
         turn = []
         river = []
-        flop = enbaralhadas[1:4]
-        turn = enbaralhadas[6]
-        river = enbaralhadas[8]
+        flop = embaralhadas[1:4]
+        turn = embaralhadas[6]
+        river = embaralhadas[8]
         return flop, turn, river
 
     def quantificando_baralho(self):
