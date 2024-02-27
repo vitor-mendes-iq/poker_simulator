@@ -15,7 +15,6 @@ class Baralho:
         random.shuffle(self.baralho_dealer)
         return self.baralho_dealer
                 
-        #random.shuffle(self.cartas)
 
 
     def distribuir_cartas(self, num_jogadores:int, cartas_por_jogador:int)->dict: # distribuindo cartas para os jogadores
@@ -33,8 +32,8 @@ class Baralho:
         return maos
 
 
-
-    def distribuir_cartas_flop(self):
+    # distribuindo cartas da mesa (flop)
+    def distribuindo_cartas_flop(self):
         embaralhadas = self.baralho_dealer
         flop = []
         turn = []
@@ -44,18 +43,20 @@ class Baralho:
         river = embaralhadas[8]
         return flop, turn, river
 
-    def quantificando_baralho(self, maos):
-        carta_split = []
-        num_card = []
-        naipe_card = []
-        for jogador, cartas in maos.items():
-            for carta in cartas:
-                carta_split = carta.split('_')
+
+
+    # def quantificando_baralho(self, maos):
+    #     carta_split = []
+    #     num_card = []
+    #     naipe_card = []
+    #     for jogador, cartas in maos.items():
+    #         for carta in cartas:
+    #             carta_split = carta.split('_')
                
                
                 
 
-        print(num_card)
+    #     print(num_card)
         #if carta_split[[0]] is  # stop here
 
 #class poker_texas_holdem:
@@ -67,16 +68,17 @@ class Baralho:
 
 baralho = Baralho()
 # configuração de players e modalidade do jogo
-num_jogadores = 6
-cartas_por_jogador = 2
+num_jogadores = int(input('numero de jogadores?'))
+cartas_por_jogador = int(input('numero de cartas por jogador?'))
 
 # embraralhar e distribuir cartas dos jogadores e flop
 baralho.embaralhar()
 
 maos = baralho.distribuir_cartas(num_jogadores, cartas_por_jogador)
 
-flop, turn, river = baralho.distribuir_cartas_flop()
+flop, turn, river = baralho.distribuindo_cartas_flop()
 print(f'maos: {maos}')
 print(f'flop: {flop}')
 print(f'turn: {turn}')
 print(f'river: {river}')
+
