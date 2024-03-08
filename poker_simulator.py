@@ -7,6 +7,9 @@ class Baralho:
                        'e':{14:'A_e',13:'K_e',12:'Q_e',11:'J_e',10:'10_e',9:'9_e',8:'8_e',7:'7_e',6:'6_e',5:'5_e',4:'4_e',3:'3_e',2:'2_e'},
                        'c':{14:'A_c',13:'K_c',12:'Q_c',11:'J_c',10:'10_c',9:'9_c',8:'8_c',7:'7_c',6:'6_c',5:'5_c',4:'4_c',3:'3_c',2:'2_c'}}
         self.baralho_dealer = []
+        self.fichas = []
+
+
 
     def embaralhar(self) -> list: # embaralhando
         for naipe, cards in self.cartas.items():
@@ -65,20 +68,23 @@ class Baralho:
 #        pass
 
 # Exemplo de uso:
+def main():
 
-baralho = Baralho()
-# configuração de players e modalidade do jogo
-num_jogadores = int(input('numero de jogadores?'))
-cartas_por_jogador = int(input('numero de cartas por jogador?'))
+    baralho = Baralho()
+    # configuração de players e modalidade do jogo
+    num_jogadores = int(input('numero de jogadores?'))
+    cartas_por_jogador = int(input('numero de cartas por jogador?'))
 
-# embraralhar e distribuir cartas dos jogadores e flop
-baralho.embaralhar()
+    # embraralhar e distribuir cartas dos jogadores e flop
+    baralho.embaralhar()
 
-maos = baralho.distribuir_cartas(num_jogadores, cartas_por_jogador)
+    maos = baralho.distribuir_cartas(num_jogadores, cartas_por_jogador)
 
-flop, turn, river = baralho.distribuindo_cartas_flop()
-print(f'maos: {maos}')
-print(f'flop: {flop}')
-print(f'turn: {turn}')
-print(f'river: {river}')
+    flop, turn, river = baralho.distribuindo_cartas_flop()
+    print(f'maos: {maos}')
+    print(f'flop: {flop}')
+    print(f'turn: {turn}')
+    print(f'river: {river}')
 
+if __name__ == '__main__':
+    main()
