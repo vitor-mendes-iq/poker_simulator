@@ -21,7 +21,7 @@ class Baralho:
         random.shuffle(self.baralho_dealer)
         return self.baralho_dealer
                 
-    def distribuir_cartas(self, num_jogadores:int, cartas_por_jogador:int)->dict: # distribuindo cartas para os jogadores
+    def distribuir_cartas(self, num_jogadores:int, cartas_por_jogador:int) -> dict: # distribuindo cartas para os jogadores
         if num_jogadores * cartas_por_jogador > len(self.baralho_dealer): # teste para ver se tem mais jogadores que cartas
             print("Não há cartas suficientes para distribuir.")
             return {}
@@ -35,15 +35,14 @@ class Baralho:
             maos[f"Jogador {jogador}"] = mao
         return maos
 
-    def contandoFichas(self, maos_distribuidas, valor_incial):
-        jogadores = []
-        #ficha_test = {}
-        for jogador in maos_distribuidas:
+    def contandoFichas(self, maos_distribuidas, valor_incial, valor_apostado) -> dict: 
+        for jogador in maos_distribuidas: # distribuindo fichas para cada jogador
             self.fichas[jogador] = valor_incial
         print(self.fichas)
+        
 
     # distribuindo cartas da mesa (flop)
-    def distribuindo_cartas_flop(self):
+    def distribuindo_cartas_flop(self) -> list:
         embaralhadas = self.baralho_dealer
         flop = []
         turn = []
