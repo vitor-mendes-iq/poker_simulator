@@ -11,19 +11,16 @@ class Baralho:
                        'c':{14:'A_c',13:'K_c',12:'Q_c',11:'J_c',10:'10_c',9:'9_c',8:'8_c',
                             7:'7_c',6:'6_c',5:'5_c',4:'4_c',3:'3_c',2:'2_c'}}
         self.baralho_dealer = []
-        self.fichas = []
+        self.fichas = {}
 
 
-
-    def embaralhar(self) -> list: # embaralhando
+    def embaralhar(self) -> dict: # embaralhando
         for naipe, cards in self.cartas.items():
             for carta in cards.values():
                 self.baralho_dealer.append(carta)
         random.shuffle(self.baralho_dealer)
         return self.baralho_dealer
                 
-
-
     def distribuir_cartas(self, num_jogadores:int, cartas_por_jogador:int)->dict: # distribuindo cartas para os jogadores
         if num_jogadores * cartas_por_jogador > len(self.baralho_dealer): # teste para ver se tem mais jogadores que cartas
             print("Não há cartas suficientes para distribuir.")
@@ -38,6 +35,12 @@ class Baralho:
             maos[f"Jogador {jogador}"] = mao
         return maos
 
+    def contandoFichas(self, maos_distribuidas, valor_incial):
+        jogadores = []
+        #ficha_test = {}
+        for jogador in maos_distribuidas:
+            self.fichas[jogador] = valor_incial
+        print(self.fichas)
 
     # distribuindo cartas da mesa (flop)
     def distribuindo_cartas_flop(self):
@@ -66,6 +69,10 @@ class Baralho:
     #     print(num_card)
         #if carta_split[[0]] is  # stop here
 
+
+
+
+
 #class poker_texas_holdem:
 
 #    def __init__(self) -> None:
@@ -73,17 +80,17 @@ class Baralho:
 
 # Exemplo de uso:
 def main():
-
     baralho = Baralho()
     # configuração de players e modalidade do jogo
-    num_jogadores = int(input('numero de jogadores?'))
-    cartas_por_jogador = int(input('numero de cartas por jogador?'))
+    num_jogadores = int(input('numero de jogadores? '))
+    cartas_por_jogador = int(input('numero de cartas por jogador? '))
+    valor_inicial = int(input('qual o valor inicial de fichas? '))
 
     # embraralhar e distribuir cartas dos jogadores e flop
     baralho.embaralhar()
 
     maos = baralho.distribuir_cartas(num_jogadores, cartas_por_jogador)
-
+    baralho.contandoFichas(maos, valor_incial=valor_inicial)
     flop, turn, river = baralho.distribuindo_cartas_flop()
     print(f'maos: {maos}')
     print(f'flop: {flop}')
