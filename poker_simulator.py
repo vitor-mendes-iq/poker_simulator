@@ -38,8 +38,7 @@ class Baralho:
     def contandoFichas(self, maos_distribuidas, valor_incial, valor_apostado) -> dict: 
         for jogador in maos_distribuidas: # distribuindo fichas para cada jogador
             self.fichas[jogador] = valor_incial
-        print(self.fichas)
-        
+        return self.fichas  
 
     # distribuindo cartas da mesa (flop)
     def distribuindo_cartas_flop(self) -> list:
@@ -51,6 +50,18 @@ class Baralho:
         turn = embaralhadas[6]
         river = embaralhadas[8]
         return flop, turn, river
+
+
+class Jogadores(Baralho):
+    def __init__(self):
+        self.jogadores = []
+        super().__init__()
+        
+
+    def jogando_cada_turno(self):
+        pass
+
+
 
 
 
@@ -84,17 +95,18 @@ def main():
     num_jogadores = int(input('numero de jogadores? '))
     cartas_por_jogador = int(input('numero de cartas por jogador? '))
     valor_inicial = int(input('qual o valor inicial de fichas? '))
-
+    aposta = int(input('qual o valor da aposta '))
     # embraralhar e distribuir cartas dos jogadores e flop
     baralho.embaralhar()
 
     maos = baralho.distribuir_cartas(num_jogadores, cartas_por_jogador)
-    baralho.contandoFichas(maos, valor_incial=valor_inicial)
+    baralho.contandoFichas(maos, valor_inicial , aposta)
     flop, turn, river = baralho.distribuindo_cartas_flop()
     print(f'maos: {maos}')
     print(f'flop: {flop}')
     print(f'turn: {turn}')
     print(f'river: {river}')
-
+    test = {1:[f,q], 2:[h,w,r]}
+    print(test)
 if __name__ == '__main__':
     main()
