@@ -106,7 +106,6 @@ def main():
     print(f'flop: {flop}')
     print(f'turn: {turn}')
     print(f'river: {river}')
-    test = {1:[f,q], 2:[h,w,r]}
-    print(test)
+   
 if __name__ == '__main__':
     main()
